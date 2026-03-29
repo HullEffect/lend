@@ -1,0 +1,29 @@
+[package]
+name = "lend"
+version = "0.1.0"
+edition = "2021"
+description = "Temporarily share local TCP and UDP services over encrypted peer-to-peer tunnels without port-forwarding"
+authors = ["HullEffect"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["tunnel", "p2p", "quic", "udp", "tcp"]
+categories = ["command-line-utilities", "network-programming"]
+rust-version = "1.81"
+
+[dependencies]
+anyhow = "1.0.95"
+base64 = "0.22"
+clap = { version = "4.5.28", features = ["derive"] }
+getrandom = "0.3.3"
+iroh = "0.97.0"
+postcard = { version = "1.1.1", features = ["use-std"] }
+serde = { version = "1.0.219", features = ["derive"] }
+subtle = "2.6.1"
+tokio = { version = "1.43.0", features = ["full"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+
+[profile.release]
+strip = true
+lto = true
+opt-level = 3
